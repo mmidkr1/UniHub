@@ -47,12 +47,12 @@ def build_student(student_data):
 
         assignments_objects = []
         for assignments_data in course_data.get("assignments")or[]:
-            assignments = Assignment(
+            assignment = Assignment(
                id= assignments_data["id"],
                title= assignments_data["title"],
                date= assignments_data["date"]
             )
-            assignments_objects.append(assignments)            
+            assignments_objects.append(assignment)            
 
         course = Course(
         id= course_data["id"],
