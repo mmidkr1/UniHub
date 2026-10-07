@@ -1,0 +1,342 @@
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+
+    color: #F8F1E4;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(248, 241, 228, 0.22),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(216, 227, 255, 0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #111C44 0%,
+            #1A275A 48%,
+            #0E1635 100%
+        );
+
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+
+/* Student Card */
+
+.Student-card {
+    max-width: 320px;
+    padding: 24px 28px;
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255,255,255,0.30),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #F8F1E4 0%,
+            #EEE4D4 55%,
+            #E7DCCB 100%
+        );
+
+    border: 1px solid rgba(17, 28, 68, 0.05);
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,0.12);
+
+    opacity: 0.92;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.Student-card:hover {
+    transform: scale(1.03);
+
+    opacity: 1;
+
+    border-color: rgba(17, 28, 68, 0.22);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.24),
+        0 0 20px rgba(30,58,138,0.14);
+}
+.student-name {
+    margin: 0 0 8px 0;
+
+    color: #111C44;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.student-id {
+    margin: 0;
+
+    color: #3C4D76;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Schedule */
+
+.Schedule-card {
+    max-width: 1000px;
+
+    margin-top: 28px;
+    padding: 38px;
+
+    border-radius: 26px;
+
+    background: rgba(248, 241, 228, 0.05);
+
+    border: 1px solid rgba(248, 241, 228, 0.08);
+
+    box-shadow:
+        0 14px 35px rgba(0,0,0,0.16);
+}
+
+
+/* Course Card */
+
+.course-card {
+    margin-bottom: 24px;
+    padding: 28px;
+
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255,255,255,0.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #F8F1E4 0%,
+            #EEE4D4 55%,
+            #E7DCCB 100%
+        );
+
+    border: 1px solid rgba(17, 28, 68, 0.10);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.16);
+}
+
+
+/* Course title */
+
+.course-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 18px;
+}
+
+
+.course-header h2 {
+    margin: 0;
+
+    color: #111C44;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+
+.course-header span {
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    background: #1E3A8A;
+
+    color: #F8F1E4;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* Quiz + Exam */
+
+.event-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-top: 12px;
+
+    padding: 14px 16px;
+
+    border-radius: 13px;
+
+    background: rgba(17, 28, 68, 0.06);
+
+    border: 1px solid rgba(17, 28, 68, 0.10);
+}
+
+
+.event-row span:first-child {
+    color: #111C44;
+
+    font-weight: 700;
+}
+
+
+.event-row span:last-child {
+    color: #3C4D76;
+
+    font-weight: 500;
+}
+
+
+/* Tagline */
+
+.top-tagline {
+    position: fixed;
+
+    top: 50%;
+    right: 60px;
+
+    transform: translateY(-50%);
+
+    max-width: 330px;
+
+    color: #F8F1E4;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    text-align: right;
+}
+
+</style>
+
+
+<div class="top-tagline">
+    A smart timetable designed for AOU students
+</div>
+
+
+<div class="Student-card">
+
+    <p class="student-name">
+        {{ student_name }}
+    </p>
+
+    <p class="student-id">
+        ID: {{ student_id }}
+    </p>
+
+</div>
+
+
+<div class="Schedule-card">
+
+    {% for course in courses %}
+
+        <div class="course-card">
+
+            <div class="course-header">
+
+                <h2>
+                    {{ course.name }}
+                </h2>
+
+                <span>
+                    {{ course.code }}
+                </span>
+
+            </div>
+
+
+            {% for quiz in course.quizzes %}
+
+                <div class="event-row">
+
+                    <span>
+                        {{ quiz.title }}
+                    </span>
+
+                    <span>
+                        {{ quiz.date }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+
+            {% for exam in course.exams %}
+
+                <div class="event-row">
+
+                    <span>
+                        {{ exam.title }}
+                    </span>
+
+                    <span>
+                        {{ exam.date }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+             {% for tma in course.tmas %}
+
+                <div class="event-row">
+
+                    <span>
+                        {{ tma.title }}
+                    </span>
+
+                    <span>
+                        {{ tma.date }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+             {% for assignment in course.assignments %}
+
+                <div class="event-row">
+
+                    <span>
+                        {{ assignment.title }}
+                    </span>
+
+                    <span>
+                        {{ assignment.date }}
+                    </span>
+
+                </div>
+
+            {% endfor %}            
+            
+
+        </div>
+
+    {% endfor %}
+
+</div>

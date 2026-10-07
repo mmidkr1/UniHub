@@ -1,0 +1,181 @@
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(248, 241, 228, 0.22),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(216, 227, 255, 0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #111C44 0%,
+            #1A275A 48%,
+            #0E1635 100%
+        );
+}
+
+
+/* Main Card */
+
+.search-card {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 38px;
+
+    border-radius: 26px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255,255,255,0.30),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #F8F1E4 0%,
+            #EEE4D4 55%,
+            #E7DCCB 100%
+        );
+
+    border: 1px solid rgba(17, 28, 68, 0.10);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,0.22),
+        0 0 30px rgba(36,87,255,0.08);
+}
+
+
+/* Title */
+
+.search-card h1 {
+    margin: 0 0 10px 0;
+
+    color: #111C44;
+
+    font-size: 38px;
+    font-weight: 700;
+}
+
+
+/* Subtitle */
+
+.search-card p {
+    margin: 0 0 28px 0;
+
+    color: #3C4D76;
+
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+
+/* Input */
+
+.search-card input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 15px 17px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(17, 28, 68, 0.14);
+
+    background:
+        rgba(17, 28, 68, 0.05);
+
+    color: #111C44;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.search-card input::placeholder {
+    color: #7C8498;
+}
+
+
+.search-card input:focus {
+    border-color: #2457FF;
+
+    background:
+        rgba(36, 87, 255, 0.06);
+
+    box-shadow:
+        0 0 0 3px rgba(36, 87, 255, 0.12);
+}
+
+
+/* Button */
+
+.search-card button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 15px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: #1E3A8A;
+
+    color: #F8F1E4;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.28);
+
+    transition: 0.2s;
+}
+
+.search-card button:hover {
+    background: #172E6E;
+    transform: translateY(-1px);
+}
+</style>
+
+
+<div class="search-card">
+
+    <h1>UniHub</h1>
+
+    <p>
+        Enter your student ID to view your timetable
+    </p>
+
+    <form action="/student" method="get">
+
+        <input
+            type="text"
+            name="student_id"
+            placeholder="Student ID"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</div>
