@@ -74,8 +74,28 @@ fake_students = {
         "id": 2,
         "name": "Ahmed Ali",
         "courses": []
-        }
+        },
 
-        
-        
+        3:{
+
+        "id":3,
+        "name":"dina noor",
+        "courses":[
+            {
+                "id":12,
+                "name": "introdtion to computer",
+                "code":"Tm112",
+                "quizzes":[
+                    {
+                        "id":3,
+                        "title":"Quiz 3",
+                        "date":"2026-11-9"
+                    }
+                ]
+   
+             }
+             
+        ]
+
+     }        
 }
