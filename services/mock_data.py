@@ -2,7 +2,7 @@ fake_students = {
     
         1: {
             "id": 1,
-            "name": "test api",
+            "name": "amr sami",
 
             "courses": [
                 {
